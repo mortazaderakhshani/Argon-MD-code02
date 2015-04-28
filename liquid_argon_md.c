@@ -9,6 +9,7 @@ void write_xyz_step(double **, int, int, double, FILE *);
 void init_positions(double **, int, double *);
 double lennard_jones(double *, double *, double);
 double sum(double*, int);
+//double  fx, fy, fz;  //force components
 
 static double kB = 1.9872041E-3; // actually R in units of kcal/mol/K
 static double eps = 0.210849;    // units of kcal/mol
@@ -67,7 +68,6 @@ int main() {
         // initialize particle positions
         init_positions(coord,nAtoms,&box);
 
-        // Calculate Lennard-Jons potential energy
 
         // time job
         stopTime = clock();
@@ -75,7 +75,7 @@ int main() {
         printf("Total job time (seconds): %f\n",timeSpent);
 }
 
-// Subroutines
+// Subroutines & Functions
 //
 
 double sum(double* array, int dim) {
@@ -90,7 +90,7 @@ double sum(double* array, int dim) {
         return temp;
 }
 
-//funciton for computing Lennard-Jonse Potential-not sure how to print it in log file
+/* funciton for computing Lennard-Jonse Potential
 
 double lennard_jones(double *pos1, double *pos2, double box) {
 
@@ -116,11 +116,33 @@ double lennard_jones(double *pos1, double *pos2, double box) {
 
         // compute the energy
         energy = (double)(4*eps*(sigma6*sigma6/(dist6*dist6)-sigma6/dist6));
-                /*      fprintf(logOut,"Energy: %d\n", energy);*/
+                //     fprintf(logOut,"Energy: %d\n", energy);
                 printf("Energy: %f\n", energy);
         return energy;
 
 }
+    */
+
+// function to compute forces 
+//void computeForces(struct Atom atoms[])
+//{
+//   int     i, j;                      // particle-indices 
+//   double  dx, dy, dz;                // dist-vector 
+//   double  r, r2, r2i, r6i;           //dist, r^2, r^{-2} and r^{-6} 
+//   double  fij;                       //force-multiplier
+//   double  eij;                       //potential energy b/w i and j
+
+/* initialize energy and forces to zero */
+//   U = 0;
+//   for ( i = 0; i < N; i = i + 1 ) 
+//   {
+//   atoms[i].fx = 0;
+//   atoms[i].fy = 0;
+//   atoms[i].fz = 0;
+//	        }
+
+
+
 
 void init_positions(double **coord, int nAtoms, double *box) {
 
